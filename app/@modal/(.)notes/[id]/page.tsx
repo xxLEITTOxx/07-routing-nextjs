@@ -21,7 +21,7 @@ const ModalPreview = async ({ params }: ModalPreviewProps) => {
 
   return (
     <HydrationBoundary state={dehydrate(queryClient)}>
-      <NotePreview />{" "}
+      <NotePreview />
     </HydrationBoundary>
   );
 };

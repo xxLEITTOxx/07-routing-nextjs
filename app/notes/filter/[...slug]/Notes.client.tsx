@@ -44,6 +44,7 @@ export default function NotesClient({ search, page, tag }: Props) {
 
   const handleSearch = (value: string) => {
     setQuery(value);
+    setCurrentPage(1);
     console.log("searching for", value);
   };
 
@@ -74,7 +75,11 @@ export default function NotesClient({ search, page, tag }: Props) {
         </header>
         {isLoading && <p>Loading...</p>}
         {error && <p>Error loading notes</p>}
-        {data && <NoteList notes={data.notes} />}
+        {data && data.notes.length > 0 ? (
+          <NoteList notes={data.notes} />
+        ) : (
+          <p>No notes found</p>
+        )}
       </div>
       {isOpenModal && (
         <Modal onClose={() => setIsOpenModal(false)}>
